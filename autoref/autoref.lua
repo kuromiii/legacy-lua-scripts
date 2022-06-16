@@ -1,5 +1,3 @@
-local version = "1.0"
-
 -- List of allowed users
 -- You may add more users or remove them as you wish
 -- Keep in mind you need to add a comma at the end of each line, and a closing bracket at the end of the list
@@ -8,6 +6,10 @@ local allowed_guids = {"insert guid here",
              "insert guid here",
              "insert another guid here 2",
              "insert yet another guid here"}
+
+-- !! - Don't touch anything below - !!
+-- Current version of the mod
+local version = "1.0"
 
 -- Register mod and print in the server console that the mod has been loaded
 function et_InitGame(levelTime, randomSeed, restart)
