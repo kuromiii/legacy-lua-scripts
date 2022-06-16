@@ -7,4 +7,12 @@ Repository containing all my Lua scripts for ET:Legacy. May or may not work with
 This mod allows to define a list of allowed users who will automatically be given referee status when they join the server.
 The list to edit is in the `autoref.lua` file and is called `allowed_guids`.
 
-To add it to your server, you simply need to upload the lua file in the `legacy` directory of your server, and add `lua_modules "autoref.lua"` in your server configuration.
+To add it to your server, you simply need to upload the lua file in the `legacy` directory of your server, and add `lua_modules "autoref.lua"` in your server configuration. You also need to edit the list of allowed users, obviously.
+
+## Firstblood
+
+This mod simply plays a sound and displays a message on first blood.
+By default, the sound that's played is the referee sound and the message is "player HAS DRAWN THE FIRST BLOOD", but this can easily be changed by editing the `firstblood.lua` file.
+Specifically, you need to change the `sound` and `message` variables.
+
+To add it to your server, you simply need to upload the lua file in the `legacy` directory of your server, and add `lua_modules "firstblood.lua"` in your server configuration.

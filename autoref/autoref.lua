@@ -11,12 +11,14 @@ local allowed_guids = {"insert guid here",
 -- Current version of the mod
 local version = "1.0"
 
--- Register mod and print in the server console that the mod has been loaded
+-- When game is ready
 function et_InitGame(levelTime, randomSeed, restart)
+    -- Register mod and print in the server console that the mod has been loaded
     et.RegisterModname("Autoref " .. version)
     et.G_Print("Autoref module version " ..  version .. " loaded! There are currently ".. #allowed_guids.. " allowed users.\n")
 end
 
+-- When client has entered the game
 function et_ClientBegin(clientNum, firstTime, isBot)
     -- Get user GUID from userinfo, and put it in uppercase
     local userinfo = et.trap_GetUserinfo(clientNum) 

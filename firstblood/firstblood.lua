@@ -18,8 +18,9 @@ local firstBlood = false
 local WORLDSPAWN_ENTITY = 1022
 local ENTITYNUM_NONE = 1023
 
--- Register mod and print in the server console that the mod has been loaded
+-- When game is ready
 function et_InitGame(levelTime, randomSeed, restart)
+    -- Register mod and print in the server console that the mod has been loaded
     et.RegisterModname("Firstblood " .. version)
     et.G_Print("First Blood Lua module version " ..  version .. " loaded!\n")
 end
