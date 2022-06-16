@@ -48,11 +48,11 @@ function et_Obituary(target, attacker, meansOfDeath)
             (attacker ~= target) and (GetTeam(target) ~= GetTeam(attacker)) and 
             gamestate == et.GS_PLAYING) then
 
-            -- Replace "%s" with the player name
+            -- Replace "%s" in our message with the player name
             local formatted_message = string.format(message, et.gentity_get(attacker, "pers.netname"))
-            -- Show the message to everyone
+            -- Show the formatted message to everyone
             et.trap_SendServerCommand(-1, "cp \"" .. formatted_message .. "\n\"")
-            -- Play the sound globally
+            -- Play the sound to everyone
             et.G_globalSound(sound)
 
             -- First blood happened

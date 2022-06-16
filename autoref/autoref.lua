@@ -20,15 +20,15 @@ end
 
 -- When client has entered the game
 function et_ClientBegin(clientNum, firstTime, isBot)
-    -- Get user GUID from userinfo, and put it in uppercase
+    -- Get user GUID from client userinfo, and put it in uppercase (just in case player GUID has lowercase characters for some reason)
     local userinfo = et.trap_GetUserinfo(clientNum) 
     local guid = string.upper(et.Info_ValueForKey(userinfo, "cl_guid"))
 
-    -- For each allowed GUIDs
+    -- For each allowed GUID in the list
     for index = 1, #allowed_guids do
-        -- If GUID matches
+        -- If GUID matches the one of the client
         if guid == allowed_guids[index] then
-            -- Set user as referee, let them know, and notify that the userinfo changed
+            -- Set client as referee, let them know with a message, and notify that the userinfo changed
             et.gentity_set(clientNum, "sess.referee", 1)
             et.trap_SendServerCommand(clientNum, "cpm \"You have automatically been added as referee\n\"")
             et.ClientUserinfoChanged(clientNum)
