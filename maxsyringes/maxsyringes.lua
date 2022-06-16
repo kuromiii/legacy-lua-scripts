@@ -1,6 +1,6 @@
--- Max number of adrenalines allowed
+-- Max number of syringes/adrenalines allowed
 -- TODO: maybe make this a cvar instead
-local max_adrenaline = 6
+local max_syringes = 6
 
 -- !! - Don't touch anything below - !!
 -- Current version of the mod
@@ -12,8 +12,8 @@ local max_clients
 -- When game is ready
 function et_InitGame(levelTime, randomSeed, restart)
     -- Register mod and print in the server console that the mod has been loaded    
-    et.RegisterModname("Adrenaline Limiter " .. version)
-    et.G_Print("Adrenaline Limiter version " ..  version .. " loaded!\n")
+    et.RegisterModname("Syringe/Adrenaline Limiter " .. version)
+    et.G_Print("Syringe/Adrenaline Limiter version " ..  version .. " loaded!\n")
     -- Get the max number of clients
     max_clients = tonumber(et.trap_Cvar_Get("sv_maxClients")) - 1
 end
@@ -25,7 +25,7 @@ function et_ClientSpawn(clientNum, revived, teamChange, restoreHealth)
         -- Set the number of syringes
         -- NOTE: We have to use et.WP_MEDIC_SYRINGE because ammo is shared between syringes and adrenalines
         -- Using et.WP_MEDIC_ADRENALINE does not work
-        et.gentity_set(clientNum, "ps.ammo", et.WP_MEDIC_SYRINGE, max_adrenaline - 1)
+        et.gentity_set(clientNum, "ps.ammo", et.WP_MEDIC_SYRINGE, max_syringes - 1)
     end
 end
 
@@ -37,9 +37,9 @@ function et_RunFrame(levelTime)
     -- For each client slot on the server
     for i = 0, max_clients do
         -- If client has more syringes than allowed
-        if et.gentity_get(i, "ps.ammo", et.WP_MEDIC_SYRINGE) >= max_adrenaline then
+        if et.gentity_get(i, "ps.ammo", et.WP_MEDIC_SYRINGE) >= max_syringes then
             -- Set the number of syringes to the max allowed amount
-            et.gentity_set(i, "ps.ammo", et.WP_MEDIC_SYRINGE, max_adrenaline - 1)
+            et.gentity_set(i, "ps.ammo", et.WP_MEDIC_SYRINGE, max_syringes - 1)
         end
     end    
 end
