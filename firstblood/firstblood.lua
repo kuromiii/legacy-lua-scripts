@@ -1,10 +1,12 @@
 -- Sound to play when first blood happens
 -- You can use anything, but don't forget to put it in a pk3 file if you use a custom sound
+-- TODO: maybe make this a cvar instead
 local sound = "sound/misc/referee.wav"
 
 -- The message to display when first blood happens
 -- "%s" will get replaced by the player who drew the first blood
--- You can use color codes
+-- You can also use color codes
+-- TODO: maybe make this a cvar instead
 local message = "%s ^0HAS DRAWN THE FIRST BLOOD"
 
 -- !! - Don't touch anything below - !!
